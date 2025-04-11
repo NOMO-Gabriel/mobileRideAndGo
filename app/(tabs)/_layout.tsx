@@ -1,40 +1,90 @@
+// app/(tabs)/_layout.tsx
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@/hooks/useTheme';
+import Header from '@/components/layout/Header';
 
 export default function TabLayout() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
+  const { colors, theme } = useTheme();
+  
   return (
     <Tabs
-  screenOptions={{
-    tabBarActiveTintColor: '#ffd33d',
-    headerStyle: {
-      backgroundColor: '#25292e',
-    },
-    headerShadowVisible: false,
-    headerTintColor: '#fff',
-    tabBarStyle: {
-    backgroundColor: '#25292e',
-    },
-  }}
->
+      screenOptions={{
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: theme === 'dark' ? '#aaa' : '#666',
+        headerShown: true,
+        header: (props) => <Header title={props.options.title} />,
+        headerStyle: {
+          backgroundColor: colors.background,
+        },
+        headerShadowVisible: false,
+        tabBarStyle: {
+          backgroundColor: colors.background,
+          borderTopColor: colors.border,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: t('home'),
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
+          tabBarLabel: t('home'),
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons 
+              name={focused ? 'home' : 'home-outline'} 
+              color={color} 
+              size={size} 
+            />
           ),
         }}
       />
+      
       <Tabs.Screen
-        name="about"
+        name="calculator"
         options={{
-          title: t('explore'),
-          tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
+          title: t('calculator'),
+          tabBarLabel: t('calculator'),
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons 
+              name={focused ? 'calculator' : 'calculator-outline'} 
+              color={color} 
+              size={size} 
+            />
+          ),
+        }}
+      />
+      
+      <Tabs.Screen
+        name="ride"
+        options={{
+          title: t('ride'),
+          tabBarLabel: t('ride'),
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons 
+              name={focused ? 'car' : 'car-outline'} 
+              color={color} 
+              size={size} 
+            />
+          ),
+        }}
+      />
+      
+      <Tabs.Screen
+        name="go"
+        options={{
+          title: t('go'),
+          tabBarLabel: t('go'),
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons 
+              name={focused ? 'navigate' : 'navigate-outline'} 
+              color={color} 
+              size={size} 
+            />
           ),
         }}
       />
