@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Card from '@/components/common/Card';
 import Button from '@/components/common/Button';
 import { Ionicons } from '@expo/vector-icons';
+import TabLayout from './_layout';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
@@ -119,6 +120,8 @@ export default function HomeScreen() {
           />
         </View>
       </Card>
+    <TabLayout/>
+
     </ScrollView>
   );
 }

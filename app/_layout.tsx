@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/theme/ThemeContext';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 import { View } from 'react-native';
+import TabLayout from './(tabs)/_layout';
 
 // Empêcher le splash screen de disparaître automatiquement
 SplashScreen.preventAutoHideAsync();
