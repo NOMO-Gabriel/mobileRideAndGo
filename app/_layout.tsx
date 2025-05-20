@@ -1,63 +1,101 @@
 // app/_layout.tsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useTheme } from '@/hooks/useTheme';
-import { ThemeProvider } from '@/theme/ThemeContext';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import * as SplashScreen from 'expo-splash-screen';
-import { View } from 'react-native';
-import TabLayout from './(tabs)/_layout';
+import { I18nProvider } from '../hooks/useTranslation.js';
+import { ThemeProvider, useTheme } from '../hooks/useTheme.js';
 
-// Empêcher le splash screen de disparaître automatiquement
-SplashScreen.preventAutoHideAsync();
+// app/_layout.tsx
+import { View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import HeaderRightIcons from './../components/common/HeaderRightIcons';
+import BottomTabBar from './../components/common/BottomTabBar';
+import tw from './../utils/tailwind.js';
 
 export default function RootLayout() {
-  const [appIsReady, setAppIsReady] = React.useState(false);
-  
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Préparer l'application (charger les ressources, initialiser des services, etc.)
-        await new Promise(resolve => setTimeout(resolve, 500)); // Simuler un chargement
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        // Si tout est prêt
-        setAppIsReady(true);
-        await SplashScreen.hideAsync();
-      }
-    }
-    
-    prepare();
-  }, []);
-
-  if (!appIsReady) {
-    return null;
-  }
-  
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <I18nProvider>
       <ThemeProvider>
         <RootLayoutNav />
       </ThemeProvider>
-    </GestureHandlerRootView>
+    </I18nProvider>
   );
 }
 
 function RootLayoutNav() {
   const { theme } = useTheme();
+  const insets = useSafeAreaInsets();
   
   return (
-    <>
-      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="search" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="profile" options={{ presentation: 'card' }} />
-        <Stack.Screen name="settings" options={{ presentation: 'modal' }} />
+    <View style={tw.style(
+      'flex-1',
+      theme.name === 'dark' ? 'bg-dark-bg' : 'bg-light-bg'
+    )}>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.name === 'dark' ? '#1B263B' : '#FFFFFF',
+          },
+          headerTintColor: theme.name === 'dark' ? '#FFFFFF' : '#1B263B',
+          headerTitleStyle: {
+            fontWeight: '600',
+            fontSize: 18,
+          },
+          headerShadowVisible: false,
+          headerRight: () => <HeaderRightIcons />,
+          contentStyle: {
+            backgroundColor: theme.name === 'dark' ? '#1B263B' : '#FFFFFF',
+          },
+        }}
+      >
+        <Stack.Screen
+          name="index"
+          options={{
+            title: 'Ride&Go',
+            headerTitleAlign: 'left',
+          }}
+        />
+        <Stack.Screen
+          name="ride"
+          options={{
+            title: 'Ride',
+          }}
+        />
+        <Stack.Screen
+          name="go"
+          options={{
+            title: 'Go',
+          }}
+        />
+        <Stack.Screen
+          name="fare-calculator"
+          options={{
+            title: 'Fare Calculator',
+          }}
+        />
+        <Stack.Screen
+          name="search"
+          options={{
+            title: 'Search',
+            presentation: 'modal',
+          }}
+        />
+        <Stack.Screen
+          name="dashboard"
+          options={{
+            title: 'Dashboard',
+          }}
+        />
       </Stack>
-    </>
+      
+      <View style={{ 
+        paddingBottom: insets.bottom,
+        backgroundColor: theme.name === 'dark' ? '#111827' : '#FFFFFF',
+      }}>
+        <BottomTabBar />
+      </View>
+      
+      <StatusBar style={theme.name === 'dark' ? 'light' : 'dark'} />
+    </View>
   );
 }

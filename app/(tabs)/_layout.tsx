@@ -2,8 +2,7 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/hooks/useTheme';
-import Header from '@/components/layout/Header';
+import { useTheme } from './../../hooks/useTheme.js';
 
 export default function TabLayout() {
   const { t } = useTranslation();
@@ -15,7 +14,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: theme === 'dark' ? '#aaa' : '#666',
         headerShown: true,
-        header: (props) => <Header title={props.options.title} />,
+        header: (props) => <p title={props.options.title} />,
         headerStyle: {
           backgroundColor: colors.background,
         },
