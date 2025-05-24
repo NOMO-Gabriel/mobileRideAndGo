@@ -2,8 +2,16 @@
 import { Link } from 'expo-router';
 import { useTranslation } from '../hooks/useTranslation.js';
 import { useTheme } from '../hooks/useTheme';
+//import FareCalculator from "./../components/features/Home/FareCalculator.jsx";
 import tw from './../utils/tailwind';
-
+import LanguageSelector from '../components/common/LanguageSelector';
+import StatisticsSection from '../components/features/Home/StatisticsSection';
+import PlusValue from '../components/features/Home/PlusValue';
+import FeaturesSection from '../components/features/Home/FeaturesSection'
+import VideoTutorials from '../components/features/Home/VideoTutorials';
+import Team from '../components/features/Home/Team';
+import Testimonials from '../components/features/Home/Testimonials';
+//import {FareCalculator} from '../components/features/Home/FareCalculator';
 // app/index.tsx
 import React from 'react';
 import { 
@@ -119,6 +127,10 @@ export default function HomePage() {
       showsVerticalScrollIndicator={false}
     >
       {/* En-tête de bienvenue */}
+      
+      
+      {/* Carte de recherche */}
+
       <LinearGradient
         colors={theme.name === 'dark' 
           ? ['#1B263B', '#263850'] 
@@ -239,6 +251,13 @@ export default function HomePage() {
           />
         </ScrollView>
       </View>
+      {/* <FareCalculator />  */}
+      <PlusValue/>
+      <VideoTutorials />
+      <StatisticsSection />
+      <FeaturesSection/>
+      <Testimonials/>
+      <Team/>
     </ScrollView>
   );
 }

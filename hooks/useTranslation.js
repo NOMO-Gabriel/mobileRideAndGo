@@ -34,6 +34,52 @@ const translations = {
     calculateFare: 'Calculer le tarif',
     todaysOffers: 'Offres du jour',
     popularDestinations: 'Destinations populaires',
+
+    //newTranslations
+     // Testimonials translations
+    whatUsersSay: 'Ce que disent nos utilisateurs',
+    testimonialsSubtitle: 'Découvrez les avis de nos utilisateurs satisfaits',
+    
+    // User roles
+    roleStudent: 'Étudiante',
+    roleBusinessman: 'Homme d\'affaires',
+    roleTeacher: 'Enseignante',
+    roleEngineer: 'Ingénieur',
+    roleDoctor: 'Médecin',
+    
+    // Testimonials content
+    testimonial1: 'Cette application a complètement changé ma façon de voyager. Interface intuitive et service impeccable !',
+    testimonial2: 'Un gain de temps énorme pour mes déplacements professionnels. Je recommande vivement !',
+    testimonial3: 'Parfait pour mes trajets quotidiens. L\'équipe est très réactive et professionnelle.',
+    testimonial4: 'Une solution moderne et efficace. L\'application fonctionne parfaitement.',
+    testimonial5: 'Service client exceptionnel et application très bien conçue. Bravo à l\'équipe !',
+    
+    // Team translations
+    meetOurTeam: 'Rencontrez notre équipe',
+    teamSubtitle: 'Des professionnels passionnés qui donnent vie à votre application',
+    management: 'Direction',
+    developers: 'Développeurs',
+    manager: 'Manager',
+    experience: 'd\'expérience',
+    about: 'À propos',
+    expertise: 'Expertise',
+    contact: 'Contacter',
+    
+    // Team roles
+    roleProjectManager: 'Chef de Projet',
+    roleTechnicalDirector: 'Directrice Technique',
+    roleFullStackDeveloper: 'Développeur Full Stack',
+    roleFrontendDeveloper: 'Développeuse Frontend',
+    roleBackendDeveloper: 'Développeur Backend',
+    roleMobileDeveloper: 'Développeuse Mobile',
+    roleDevOpsEngineer: 'Ingénieur DevOps',
+    
+    // Team expertise
+    expertiseProjectManagement: 'Gestion de projet',
+    expertiseTeamLeadership: 'Leadership d\'équipe',
+    expertiseAgile: 'Méthodologies Agile',
+    expertiseSystemArchitecture: 'Architecture système',
+    
   },
   en: {
     welcome: 'Welcome to our application',
@@ -120,3 +166,4 @@ export const useTranslation = () => {
   }
   return context;
 };
+
