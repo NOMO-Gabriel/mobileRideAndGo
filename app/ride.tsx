@@ -124,8 +124,9 @@ export default function HomePage() {
       
       
       {/* Carte de recherche */}
-         
+      {/* <RideMapComponent/>  */}
       <RideBookingComponent />
+      
     </ScrollView>
   );
 }
