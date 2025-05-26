@@ -125,7 +125,7 @@ const Testimonials = () => {
         'absolute top-4 right-4 w-8 h-8 rounded-full items-center justify-center',
         'bg-primary bg-opacity-10'
       )}>
-        <Feather name="quote" size={16} color="#FF8C00" />
+        <Feather name="message-circle" size={16} color="#FF8C00" />
       </View>
 
       {/* User info */}
