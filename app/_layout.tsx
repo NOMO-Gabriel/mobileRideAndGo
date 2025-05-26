@@ -83,7 +83,7 @@ function RootLayoutNav() {
         <Stack.Screen
           name="dashboard"
           options={{
-            title: 'Dashboard',
+            headerShown: false, // Dashboard has its own header
           }}
         />
       </Stack>
