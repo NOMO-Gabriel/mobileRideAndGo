@@ -33,6 +33,12 @@
           "backgroundColor": "#ffffff"
         }
       ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Cette app a besoin d'accéder à votre localisation pour calculer les trajets."
+        }
+      ],
       "expo-localization",
       "expo-font",
       "expo-web-browser"

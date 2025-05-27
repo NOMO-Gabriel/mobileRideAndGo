@@ -136,38 +136,6 @@ const FareCalculator = () => {
 
   return (
     <ScrollView style={containerStyle} showsVerticalScrollIndicator={false}>
-      {/* Header */}
-      <View style={tw`mb-6`}>
-        <Text style={tw.style(
-          'text-2xl font-bold mb-2',
-          theme.name === 'dark' ? 'text-white' : 'text-gray-800'
-        )}>
-          {t('fareCalculator') || 'Calculateur de tarifs'}
-        </Text>
-        <Text style={subtextStyle}>
-          {t('calculateFareDescription') || 'Calculez le tarif de votre trajet instantanément'}
-        </Text>
-      </View>
-      
-      {/* Map Placeholder */}
-      <View style={[cardStyle, tw`h-48 mb-6 justify-center items-center`]}>
-        <LinearGradient
-          colors={theme.name === 'dark' ? ['#1B263B', '#263850'] : ['#FFE0B2', '#FFF3E0']}
-          style={tw`absolute inset-0 rounded-2xl`}
-        />
-        <Feather 
-          name="map" 
-          size={48} 
-          color={theme.name === 'dark' ? '#FF8C00' : '#1B263B'} 
-        />
-        <Text style={[textStyle, tw`mt-3 font-medium`]}>
-          {t('interactiveMap') || 'Carte interactive'}
-        </Text>
-        <Text style={[subtextStyle, tw`text-center mt-1`]}>
-          {t('mapDescription') || 'Sélectionnez vos points de départ et d\'arrivée'}
-        </Text>
-      </View>
-      
       {/* Input Form */}
       <View style={cardStyle}>
         <Text style={[textStyle, tw`font-bold text-lg mb-4`]}>
@@ -242,6 +210,27 @@ const FareCalculator = () => {
           </LinearGradient>
         </TouchableOpacity>
       </View>
+      
+      {/* Map Placeholder */}
+      <View style={[cardStyle, tw`h-48 mb-6 justify-center items-center`]}>
+        <LinearGradient
+          colors={theme.name === 'dark' ? ['#1B263B', '#263850'] : ['#FFE0B2', '#FFF3E0']}
+          style={tw`absolute inset-0 rounded-2xl`}
+        />
+        <Feather 
+          name="map" 
+          size={48} 
+          color={theme.name === 'dark' ? '#FF8C00' : '#1B263B'} 
+        />
+        <Text style={[textStyle, tw`mt-3 font-medium`]}>
+          {t('interactiveMap') || 'Carte interactive'}
+        </Text>
+        <Text style={[subtextStyle, tw`text-center mt-1`]}>
+          {t('mapDescription') || 'Sélectionnez vos points de départ et d\'arrivée'}
+        </Text>
+      </View>
+      
+      
       
       {/* Results */}
       {showResults && (

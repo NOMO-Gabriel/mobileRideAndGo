@@ -141,86 +141,10 @@ const FareFeatures = () => {
   
   return (
     <ScrollView style={containerStyle} showsVerticalScrollIndicator={false}>
-      {/* Header */}
-      <View style={tw`mb-6`}>
-        <Text style={tw.style(
-          'text-2xl font-bold mb-2',
-          theme.name === 'dark' ? 'text-white' : 'text-gray-800'
-        )}>
-          {t('fareTools') || 'Outils tarifaires'}
-        </Text>
-        <Text style={subtextStyle}>
-          {t('fareToolsDescription') || 'Découvrez nos fonctionnalités avancées pour optimiser vos trajets'}
-        </Text>
-      </View>
       
-      {/* Stats Overview */}
-      <View style={tw.style(
-        'rounded-2xl p-5 mb-6 shadow-sm',
-        theme.name === 'dark' ? 'bg-gray-800' : 'bg-white'
-      )}>
-        <Text style={[textStyle, tw`font-bold text-lg mb-4`]}>
-          {t('thisMonth') || 'Ce mois-ci'}
-        </Text>
-        
-        <View style={tw`flex-row justify-between`}>
-          <View style={tw`items-center flex-1`}>
-            <Text style={tw`text-primary text-2xl font-bold`}>
-              127
-            </Text>
-            <Text style={[subtextStyle, tw`text-center mt-1`]}>
-              {t('ridesCalculated') || 'Trajets calculés'}
-            </Text>
-          </View>
-          
-          <View style={tw.style(
-            'w-px mx-4',
-            theme.name === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
-          )} />
-          
-          <View style={tw`items-center flex-1`}>
-            <Text style={tw`text-primary text-2xl font-bold`}>
-              €234
-            </Text>
-            <Text style={[subtextStyle, tw`text-center mt-1`]}>
-              {t('totalSavings') || 'Économies totales'}
-            </Text>
-          </View>
-          
-          <View style={tw.style(
-            'w-px mx-4',
-            theme.name === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
-          )} />
-          
-          <View style={tw`items-center flex-1`}>
-            <Text style={tw`text-primary text-2xl font-bold`}>
-              4.8
-            </Text>
-            <Text style={[subtextStyle, tw`text-center mt-1`]}>
-              {t('satisfaction') || 'Satisfaction'}
-            </Text>
-          </View>
-        </View>
-      </View>
       
-      {/* Feature Cards */}
-      <View style={tw`mb-6`}>
-        <Text style={[textStyle, tw`font-bold text-lg mb-4`]}>
-          {t('availableFeatures') || 'Fonctionnalités disponibles'}
-        </Text>
-        
-        {/* Large card */}
-        {renderFeatureCard(features[0], 0)}
-        
-        {/* Small cards row */}
-        <View style={tw`flex-row justify-between`}>
-          {features.slice(1).map((feature, index) => 
-            renderFeatureCard(feature, index + 1)
-          )}
-        </View>
-      </View>
       
-      {/* Quick Actions */}
+      {/* Services externes ( ancien service externe) */}
       <View style={tw.style(
         'rounded-2xl p-5 mb-6 shadow-sm',
         theme.name === 'dark' ? 'bg-gray-800' : 'bg-white'
@@ -277,25 +201,8 @@ const FareFeatures = () => {
         </View>
       </View>
       
-      {/* Tips Card */}
-      <View style={tw.style(
-        'rounded-2xl p-5 mb-6 shadow-sm border-l-4 border-primary',
-        theme.name === 'dark' ? 'bg-gray-800' : 'bg-white'
-      )}>
-        <View style={tw`flex-row items-start`}>
-          <View style={tw`bg-primary bg-opacity-20 p-2 rounded-full mr-3 mt-1`}>
-            <Feather name="lightbulb" size={16} color="#FF8C00" />
-          </View>
-          <View style={tw`flex-1`}>
-            <Text style={[textStyle, tw`font-bold mb-2`]}>
-              {t('proTip') || 'Astuce pro'}
-            </Text>
-            <Text style={[subtextStyle, tw`leading-5`]}>
-              {t('proTipDescription') || 'Utilisez les alertes prix pour être notifié quand le tarif d\'un trajet diminue. Économisez jusqu\'à 30% sur vos trajets réguliers!'}
-            </Text>
-          </View>
-        </View>
-      </View>
+    
+      
       
       {/* Bottom spacing */}
       <View style={tw`h-6`} />
