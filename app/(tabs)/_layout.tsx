@@ -6,22 +6,22 @@ import { useTheme } from './../../hooks/useTheme.js';
 
 export default function TabLayout() {
   const { t } = useTranslation();
-  const { colors, theme } = useTheme();
+  const { theme } = useTheme();
   
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: theme === 'dark' ? '#aaa' : '#666',
+        tabBarActiveTintColor: theme.primary,
+        tabBarInactiveTintColor: theme.name === 'dark' ? '#aaa' : '#666',
         headerShown: true,
-        header: (props) => <p title={props.options.title} />,
         headerStyle: {
-          backgroundColor: colors.background,
+          backgroundColor: theme.background,
         },
+        headerTintColor: theme.text,
         headerShadowVisible: false,
         tabBarStyle: {
-          backgroundColor: colors.background,
-          borderTopColor: colors.border,
+          backgroundColor: theme.background,
+          borderTopColor: theme.border,
         },
         tabBarLabelStyle: {
           fontSize: 12,

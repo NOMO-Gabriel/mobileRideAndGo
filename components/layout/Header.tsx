@@ -1,12 +1,12 @@
 // components/layout/Header.tsx
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Modal } from 'react-native';
-import { useTheme } from '@/hooks/useTheme';
+import { useTheme } from '../hooks/useTheme';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
-import { LanguageSwitcher } from '@/components/common/LanguageSwitcher';
+import { ThemeSwitcher } from '../components/common/ThemeSwitcher';
+import { LanguageSwitcher } from '../components/common/LanguageSwitcher';
 
 type Props = {
   title?: string;
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function Header({ title, showBack = false, transparent = false }: Props) {
-  const { colors } = useTheme();
+  const { theme } = useTheme(); // Only destructure theme
   const { t } = useTranslation();
   const router = useRouter();
   const [showSettings, setShowSettings] = useState(false);
@@ -25,17 +25,17 @@ export default function Header({ title, showBack = false, transparent = false }:
       <View
         style={[
           styles.header,
-          { backgroundColor: transparent ? 'transparent' : colors.background },
+          { backgroundColor: transparent ? 'transparent' : theme.background }, // Use theme.background
         ]}
       >
         <View style={styles.leftSection}>
           {showBack && (
             <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-              <Ionicons name="arrow-back" size={24} color={colors.text} />
+              <Ionicons name="arrow-back" size={24} color={theme.text} />
             </TouchableOpacity>
           )}
           {title && (
-            <Text style={[styles.title, { color: colors.text }]}>
+            <Text style={[styles.title, { color: theme.text }]}>
               {title}
             </Text>
           )}
@@ -47,7 +47,7 @@ export default function Header({ title, showBack = false, transparent = false }:
             style={styles.iconButton} 
             onPress={() => router.push('/search')}
           >
-            <Ionicons name="search" size={24} color={colors.text} />
+            <Ionicons name="search" size={24} color={theme.text} />
           </TouchableOpacity>
           
           {/* Bouton de profil utilisateur */}
@@ -55,7 +55,7 @@ export default function Header({ title, showBack = false, transparent = false }:
             style={styles.iconButton} 
             onPress={() => router.push('/profile')}
           >
-            <Ionicons name="person-circle" size={24} color={colors.text} />
+            <Ionicons name="person-circle" size={24} color={theme.text} />
           </TouchableOpacity>
           
           {/* Bouton de paramètres */}
@@ -63,7 +63,7 @@ export default function Header({ title, showBack = false, transparent = false }:
             style={styles.iconButton} 
             onPress={() => setShowSettings(true)}
           >
-            <Ionicons name="settings-outline" size={24} color={colors.text} />
+            <Ionicons name="settings-outline" size={24} color={theme.text} />
           </TouchableOpacity>
         </View>
       </View>
@@ -83,27 +83,27 @@ export default function Header({ title, showBack = false, transparent = false }:
           <View 
             style={[
               styles.settingsContainer, 
-              { backgroundColor: colors.background }
+              { backgroundColor: theme.background }
             ]}
           >
             <View style={styles.settingsHeader}>
-              <Text style={[styles.settingsTitle, { color: colors.text }]}>
+              <Text style={[styles.settingsTitle, { color: theme.text }]}>
                 {t('common:settings')}
               </Text>
               <TouchableOpacity onPress={() => setShowSettings(false)}>
-                <Ionicons name="close" size={24} color={colors.text} />
+                <Ionicons name="close" size={24} color={theme.text} />
               </TouchableOpacity>
             </View>
             
             <View style={styles.settingsSection}>
-              <Text style={[styles.sectionTitle, { color: colors.text }]}>
+              <Text style={[styles.sectionTitle, { color: theme.text }]}>
                 {t('common:language')}
               </Text>
               <LanguageSwitcher />
             </View>
             
             <View style={styles.settingsSection}>
-              <Text style={[styles.sectionTitle, { color: colors.text }]}>
+              <Text style={[styles.sectionTitle, { color: theme.text }]}>
                 {t('common:darkMode')}
               </Text>
               <ThemeSwitcher />
